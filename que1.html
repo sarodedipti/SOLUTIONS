@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>Reverse Stack</title>
+</head>
+<body>
+    <h2>Reverse Stack</h2>
+    <button onclick="reverseStack()">Reverse Stack</button>
+    <div id="result"></div>
+
+    <script>
+        let stack = [1, 2, 3, 4, 5];
+
+        function push(item) {
+            stack.push(item);
+        }
+
+        function pop() {
+            if (stack.length === 0) {
+                return null;
+            }
+            return stack.pop();
+        }
+
+        function reverseStack() {
+            let tempStack = [];
+            while (stack.length > 0) {
+                tempStack.push(pop());
+            }
+            stack = tempStack;
+        }
+
+        function printStack() {
+            document.getElementById("result").innerHTML = "Stack: [" + stack.join(", ") + "]";
+        }
+
+        printStack();
+
+        document.getElementById("reverseBtn").onclick = function() {
+            reverseStack();
+            printStack();
+        };
+    </script>
+    <button id="reverseBtn">Reverse Stack</button>
+</body>
+</html>

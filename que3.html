@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Depth-First Search (DFS)</title>
+</head>
+<body>
+    <h2>Depth-First Search (DFS)</h2>
+    <button onclick="dfs()">Perform DFS</button>
+    <div id="result"></div>
+
+    <script>
+        // Graph represented by adjacency list
+        let graph = {
+            'A': ['B', 'C'],
+            'B': ['A', 'D', 'E'],
+            'C': ['A', 'F'],
+            'D': ['B'],
+            'E': ['B', 'F'],
+            'F': ['C', 'E']
+        };
+
+        // Visited set to keep track of visited vertices
+        let visited = new Set();
+
+        // Result array to store DFS traversal order
+        let result = [];
+
+        function dfs(startVertex) {
+            visited.add(startVertex);
+            result.push(startVertex);
+
+            // Recur for all adjacent vertices
+            for (let neighbor of graph[startVertex]) {
+                if (!visited.has(neighbor)) {
+                    dfs(neighbor);
+                }
+            }
+        }
+
+        // Perform DFS starting from vertex 'A'
+        function performDFS() {
+            visited.clear();
+            result = [];
+            dfs('A');
+            document.getElementById("result").innerHTML = "DFS Traversal Order: " + result.join(" -> ");
+        }
+
+        document.getElementById("dfsBtn").onclick = performDFS;
+    </script>
+    <button id="dfsBtn">Perform DFS</button>
+</body>
+</html>

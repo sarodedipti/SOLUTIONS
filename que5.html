@@ -1,0 +1,177 @@
+index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" class="menu-icon">&#9776;</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="posts">
+            <article>
+                <h2>Post Title</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <img src="image.jpg" alt="Post Image">
+                <button>Like</button>
+                <button>Comment</button>
+            </article>
+            <!-- More posts here -->
+        </section>
+        <aside class="sidebar">
+            <h2>Trending Topics</h2>
+            <ul>
+                <li><a href="#">Topic 1</a></li>
+                <li><a href="#">Topic 2</a></li>
+                <li><a href="#">Topic 3</a></li>
+            </ul>
+        </aside>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+styles.css
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+.posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+article {
+    background-color: #f7f7f7;
+    padding: 1em;
+    margin: 1em;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+    background-color: #f7f7f7;
+    padding: 1em;
+    margin: 1em;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design */
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+    .posts {
+        flex-direction: column;
+    }
+    article {
+        margin: 1em 0;
+    }
+    .sidebar {
+        margin: 1em 0;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 0.5em;
+    }
+    nav ul {
+        flex-direction: column;
+    }
+    nav li {
+        margin-right: 0;
+    }
+    main {
+        padding: 1em;
+    }
+    article {
+        padding: 0.5em;
+    }
+    .sidebar {
+        padding: 0.5em;
+    }
+}
+
+
+
+script.js
+
+// Swipe gestures for navigation on touch-enabled devices
+
+const swipeThreshold = 50;
+let startX = 0;
+let endX = 0;
+
+document.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+});
+
+document.addEventListener('touchend', (e) => {
+    endX = e.changedTouches[0].clientX;
+    const swipeDistance = Math.abs(endX - startX);
+    if (swipeDistance > swipeThreshold) {
+        if (endX < startX) {
+            // Swipe left
+            console.log('Swipe left');
+            // Navigate to next page
+        } else {
+            // Swipe right
+            console.log('Swipe right');
+            // Navigate to previous page
+        }
+    }
+});
